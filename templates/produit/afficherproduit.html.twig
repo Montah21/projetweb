@@ -1,0 +1,42 @@
+{%extends 'back.html.twig' %}
+{% block body %}
+<div class="card-body pb-0">
+                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                         <th scope="col">Prix</th>
+                          <th scope="col">Stock</th>
+                          <th scope="col">Image</th>
+                          <th scope="col">Categorie</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for produit in produits %}
+                      <tr>
+                       <td> {{produit.id}}</td>
+                       <td>{{produit.nom}}</td>
+                       <td>{{produit.prix}}</td>
+                       <td>{{produit.stock}}</td>
+                       <td><img img src="{{asset('uploads/')~produit.getImage()}}" alt="product-1" height="50" width="50" /></td>
+                       <td>{{produit.getCategories().libelle}}</td>
+                       <td><a href="{{path('app_deleteproduit',{id:produit.id})}} " class="card-link">Delete</a> </td>
+                <td><a href="{{path('app_produitadd',{id:produit.id})}} " class="card-link">Edit</a></td>
+
+                        {% endfor %}
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                <td><a href="{{path('app_produitadd')}} " class="card-link">Add</a></td>
+                </div>
+
+             
+ 
+{% endblock %}
+{% block title %}
+{% endblock %}

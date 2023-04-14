@@ -1,0 +1,12 @@
+{%extends 'back.html.twig' %}
+{% block body %}
+
+   {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+   <div class="row">
+      <div class="col">{{ form_row(form.libelle) }}</div>
+      
+   </div>
+   {{ form_rest(form) }}
+{% endblock %}
+{% block title %}
+{% endblock %}
